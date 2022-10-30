@@ -20,12 +20,18 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Column(
         children: const [
-          Tile(),
-          Tile(),
-          Tile(),
-          Tile(),
-          Tile(),
-          Tile(),
+          Tile(
+            habitName: 'Exercise',
+          ),
+          Tile(
+            habitName: 'Read',
+          ),
+          Tile(
+            habitName: 'Meditate',
+          ),
+          Tile(
+            habitName: 'Code',
+          ),
         ],
       ),
     );

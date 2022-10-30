@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 
-class Tile extends StatefulWidget {
-  const Tile({Key? key}) : super(key: key);
+class Tile extends StatelessWidget {
+  final String habitName;
+  const Tile({Key? key, required this.habitName}) : super(key: key);
 
-  @override
-  State<Tile> createState() => _TileState();
-}
-
-class _TileState extends State<Tile> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -24,9 +21,40 @@ class _TileState extends State<Tile> {
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
-            Text('Exercise'),
-            Icon(Icons.settings),
+          children: [
+            Row(
+              children: [
+                CircularPercentIndicator(
+                  radius: 40,
+                  percent: .4,
+                ),
+                const SizedBox(
+                  width: 20,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      habitName,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 4,
+                    ),
+                    const Text(
+                      '2:00 / 10 = 20%',
+                      style: TextStyle(
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            const Icon(Icons.settings),
           ],
         ),
       ),
