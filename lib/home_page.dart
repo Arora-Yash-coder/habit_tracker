@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:habit_tracker/utils/tile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -18,23 +19,13 @@ class _HomePageState extends State<HomePage> {
         centerTitle: false,
       ),
       body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Container(
-              padding: const EdgeInsets.all(20.0),
-              decoration: BoxDecoration(
-                color: Colors.grey[100],
-                borderRadius: BorderRadius.circular(12.0),
-              ),
-              child: Row(
-                children: const [
-                  Text('Exercise'),
-                  Icon(Icons.settings),
-                ],
-              ),
-            ),
-          )
+        children: const [
+          Tile(),
+          Tile(),
+          Tile(),
+          Tile(),
+          Tile(),
+          Tile(),
         ],
       ),
     );
