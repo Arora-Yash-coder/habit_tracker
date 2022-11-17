@@ -3,7 +3,21 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class Tile extends StatelessWidget {
   final String habitName;
-  const Tile({Key? key, required this.habitName}) : super(key: key);
+  final VoidCallback onTap;
+  final VoidCallback settingsTap;
+  final int timeSpent;
+  final int timeGoal;
+  final bool habitStarted;
+
+  const Tile({
+    Key? key,
+    required this.habitName,
+    required this.onTap,
+    required this.settingsTap,
+    required this.timeSpent,
+    required this.timeGoal,
+    required this.habitStarted,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +38,25 @@ class Tile extends StatelessWidget {
           children: [
             Row(
               children: [
-                CircularPercentIndicator(
-                  radius: 40,
-                  percent: .4,
+                GestureDetector(
+                  onTap: onTap,
+                  child: SizedBox(
+                    height: 60,
+                    width: 60,
+                    child: Stack(
+                      children: [
+                        CircularPercentIndicator(
+                          radius: 60,
+                          percent: .0,
+                        ),
+                        Center(
+                          child: Icon(
+                            habitStarted ? Icons.pause : Icons.play_arrow,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
                 ),
                 const SizedBox(
                   width: 20,
@@ -44,9 +74,9 @@ class Tile extends StatelessWidget {
                     const SizedBox(
                       height: 4,
                     ),
-                    const Text(
-                      '2:00 / 10 = 20%',
-                      style: TextStyle(
+                    Text(
+                      '$timeSpent / $timeGoal',
+                      style: const TextStyle(
                         color: Colors.grey,
                       ),
                     ),
@@ -54,7 +84,10 @@ class Tile extends StatelessWidget {
                 ),
               ],
             ),
-            const Icon(Icons.settings),
+            GestureDetector(
+              onTap: settingsTap,
+              child: const Icon(Icons.settings),
+            ),
           ],
         ),
       ),
