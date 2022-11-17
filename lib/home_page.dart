@@ -13,8 +13,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   // Habit List
   List habitList = [
-    ['Excersice', false, 0, 10],
-    ['Code', false, 0, 10],
+    ['Excersice', false, 0, 60],
+    ['Code', false, 0, 120],
     ['Meditate', false, 0, 10],
     ['Read', false, 0, 10],
   ];
@@ -65,6 +65,17 @@ class _HomePageState extends State<HomePage> {
           title: const Text('Consistency is key.'),
           backgroundColor: Colors.grey[900],
           centerTitle: false,
+        ),
+        floatingActionButton: SizedBox(
+          height: 60,
+          width: 60,
+          child: FloatingActionButton(
+            backgroundColor: Colors.grey[900],
+            child: const Icon(Icons.add),
+            onPressed: () {
+              //Gives you an alert dialog here to add new habits
+            },
+          ),
         ),
         body: ListView.builder(
           itemCount: habitList.length,
